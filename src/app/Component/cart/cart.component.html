@@ -1,0 +1,33 @@
+<mat-card [ngClass.xs]="[ 'my-cart-xs']" id="my-cart">
+    <mat-card style="box-shadow: none;" *ngIf="cartCount==0&&!isCartEmpty; else elseBlock">
+        <h1 id="empty-msg-header">Your cart is empty</h1>
+        <p id="empty-msg-body">You have no items in your shopping cart.<br>Let's go buy something!</p>
+        <button (click)="navigateToHomePage()" mat-button id="shop-now-btn">Shop Now</button>
+    </mat-card>
+    <ng-template #elseBlock>
+        <h2 style="display: inline;margin-left: 16%;">My cart&nbsp;</h2>
+        <h6 id="h4">({{cartCount}})</h6>
+        <mat-card fxLayout="column" style="box-shadow: none; margin: 4% 0%;">
+            <mat-card fxLayout="row" fxLayoutGap="20px" fxLayout="row wrap" fxLayout.xs="column" class="display-container" *ngFor="let data of cartBooks">
+                <mat-card style="background: none;" fxFlex="20" fxFlex.md="30" fxFlex.sm="40" id="image-card" class="display-card"><img class="img" [src]="data.coverPhoto"></mat-card>
+                <mat-card fxFlex="20" fxFlex.md="30" fxFlex.sm="40" class="display-card">
+                    <h6>{{data.bookName}}</h6>
+                    <p>{{data.auther}}</p>
+                    <h6>Rs.&nbsp;{{data.price*quantity(data)}}</h6>
+                    <div class="quantity-detail">
+                        <span (click)="decrementQuantity(data)" class="circle">-</span>
+                        <span class="quantity">{{ quantity(data)}}</span>
+                        <span (click)="incrementQuantity(data)" class="circle">+</span>
+                        <span (click)="removeBookFromCart(data)" id="remove">Remove</span>
+                        <mat-error id="errorMsg" *ngIf="errorMsg!='' && data.totalNumberOfBooks==quantity(data)">{{errorMsg}}</mat-error>
+                    </div>
+                </mat-card>
+            </mat-card>
+        </mat-card>
+    </ng-template>
+    <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="end center">
+        <button fxFlex="30" *ngIf="cartCount!=0 && !showCustomerDetails;" (click)="placeOrder()" mat-button id="place-order-btn">PLACE ORDER</button>
+    </div>
+</mat-card>
+<app-customer-details *ngIf="cartCount!=0;" [showCustomerDetails]=" showCustomerDetails "></app-customer-details>
+<app-order-summary *ngIf="cartCount!=0;"></app-order-summary>

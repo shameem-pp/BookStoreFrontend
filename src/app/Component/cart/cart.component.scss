@@ -1,0 +1,130 @@
+#h4 {
+    display: inline;
+    font-size: 18px;
+    color: black;
+}
+
+#my-cart {
+    border-style: solid;
+    border-width: 1px;
+    background: white;
+    margin: 2% 31% 2% 21%;
+    border-radius: unset;
+    box-shadow: none;
+}
+
+.my-cart-xs {
+    margin: 2%!important;
+}
+
+// @media screen and (max-width: 900px) {
+//     #place-order-btn {
+//         margin-left: 56%!important;
+//     }
+// }
+#empty-msg-header {
+    margin: 5% 12% 5% 26%;
+    font-size: 34px;
+    font-weight: 500;
+}
+
+#errorMsg {
+    font-size: 11px;
+    margin-top: 12%;
+}
+
+#empty-msg-body {
+    margin: 4% 12% 3% 30%;
+    font-size: 12px;
+    font-weight: 500;
+    color: #a2a0a0;
+}
+
+#shop-now-btn {
+    color: white;
+    background: maroon;
+    margin: 4% 40%;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 2%;
+}
+
+#place-order-btn {
+    color: white;
+    font-size: 9px;
+    font-weight: 400;
+    border-radius: 2%;
+    background: #72abec;
+    // margin: 2% 5% 2% 76%;
+    margin-bottom: 4%;
+    padding: unset;
+    margin-right: 9%;
+    position: relative;
+}
+
+.img {
+    height: 110px;
+    width: 85px;
+    margin: 4% 0%;
+}
+
+#remove {
+    font-size: 10px;
+    margin-left: -3%;
+    cursor: pointer;
+}
+
+h6 {
+    font-size: 14px;
+    margin: 5% 0%;
+    font-weight: 500;
+}
+
+.circle {
+    border-radius: 50%;
+    background: #ece7e7;
+    margin-right: 10%;
+    padding: 5%;
+    cursor: pointer;
+}
+
+.quantity {
+    margin-right: 10%;
+    padding: 5% 18%;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 10px;
+}
+
+p {
+    font-size: 9px;
+    margin: 0%;
+    color: #b9b3b3;
+    font-weight: 500;
+}
+
+.display-card {
+    margin-left: 2%;
+    margin-right: 3%;
+    // width: 20%;
+    margin-bottom: 3%;
+    border-radius: 6px;
+    border-radius: unset;
+    box-shadow: none;
+}
+
+.display-container {
+    // display: flex;
+    // flex-wrap: wrap;
+    // align-items: flex-start;
+    // justify-content: flex-start;
+    margin: 3% 13%;
+    box-shadow: none;
+    background: none;
+}
+
+#image-card {
+    background: #f3eeee;
+    text-align: center;
+    box-shadow: unset;
+}

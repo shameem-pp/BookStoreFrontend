@@ -1,0 +1,25 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar style="background: maroon;" class="example-toolbar">
+        <img class="book-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QA/wD/AP+gvaeTAAABd0lEQVQ4je3VMWsUURTF8d9dtjIoGKIGYQkW0TIQjZ1ioYU2YsDSxs+hiCB+AHsrBdEihRCx1NiZBNFSQYQIRjcoCEklXIu5I0uiYRHS7YFh7jDnnnffg/kPe6Roi8ycRA9fsRERW8MEZOY+TOAI1iJiHboDnvO4hW84mpkdvMYrLETE5wrq4QrO4jR+4QsO4zYeQrcCxir8cUTcGJhkDhfwIjM/1g6P4RHuYaXdWWbeqft+bHZq+4s7zihiKyJe1kLTWMEypiPiZkQs/eO4FtHr/uXFDkVEZma/rYfp6Qxj+h+NgkfBo+BdtP2Tns/McQ3h3mM5Ij5sb8rM0PDjFI5ryHYOd1tPZOYUHuBSmSZxCCdwRsPapzhQPT9xGX0s1QB9rFf9DNei+LqKzTJslOkt3pT5Iq5X8H08ryFmMaOB/EQNNIaTg3+QwDgOalA6W9ccPmFBw+N5TGkQulqLr+EHvrf0+xO8mzJzBlfr8UlEvBumb0/0G/aodUeVXte4AAAAAElFTkSuQmCC">
+        <h1>Bookstore</h1>
+        <mat-card class="search-container">
+            <mat-icon class="search-icon" matSuffix>search</mat-icon>
+            <input class="search-box" type="text" (input)="onSearchChange($event.target.value)" name="search" autocomplete="off" placeholder="Search">
+        </mat-card>
+        <!-- <h6>Cart</h6> -->
+        <span (click)="showCartPage=true" [ngStyle]="{'margin-left':'9%','color':'white','font-size':'24px','cursor':'pointer' }" class="material-icons icon">
+                shopping_cart
+                </span>
+        <span (click)="showCartPage=true" *ngIf="cartCount>0" id="circle"></span>
+        <span (click)="showCartPage=true" *ngIf="cartCount>0" id="show-cart-count">{{cartCount}}</span>
+        <!-- <span class="signin" (click)="navigateToSignIn()" *ngIf="!isSignedIn()">Sign&nbsp;in</span> -->
+        <span class="signin" (click)="navigateToSignIn()">Sign&nbsp;out</span>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav-content>
+            <ngx-spinner></ngx-spinner>
+            <app-books *ngIf="!showCartPage"></app-books>
+            <app-cart [routerLink]="'cart'" [cartCount]="cartCount" *ngIf="showCartPage"></app-cart>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

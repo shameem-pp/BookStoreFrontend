@@ -1,0 +1,56 @@
+<mat-card [ngClass.xs]="[ 'my-cart-xs']" id="customer-details" *ngIf="!showCustomerDetails; else elseBlock">
+    <h3 id="h3">Customer Details</h3>
+</mat-card>
+<ng-template #elseBlock>
+    <mat-card [ngClass.xs]="[ 'my-cart-xs']" id="customer-details">
+        <h3 id="h3">Customer Details</h3>
+        <form [formGroup]="customerDetails" (ngSubmit)="updateCustomerInfo()">
+            <div fxLayout="column" fxLayoutGap="12px">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <mat-form-field fxFlex="40" appearance="outline" class="box">
+                        <mat-label>Name</mat-label>
+                        <input formControlName="name" matInput placeholder="Name" required type="text">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="40" appearance="outline" class="box">
+                        <mat-label>Phone number</mat-label>
+                        <input formControlName="phone" matInput placeholder="Phone number" type="text">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <mat-form-field fxFlex="40" appearance="outline" class="box">
+                        <mat-label>Pincode</mat-label>
+                        <input formControlName="pinCode" matInput placeholder="Pincode" type="text">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="40" appearance="outline" class="box">
+                        <mat-label>Locality</mat-label>
+                        <input formControlName="locality" matInput placeholder="Locality" type="text">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <mat-form-field fxFlex="80" appearance="outline" class="box1">
+                        <mat-label>Address</mat-label>
+                        <textarea formControlName="address" matInput rows="4" cols="30" placeholder="Address"></textarea>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout="row wrap" fxLayoutAlign="center center" fxLayout.xs="column">
+                    <mat-form-field fxFlex="40" appearance="outline" class="box">
+                        <mat-label>city/town</mat-label>
+                        <input formControlName="city" matInput placeholder="city/town" type="text">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="40" appearance="outline" class="box">
+                        <mat-label>Landmark</mat-label>
+                        <input formControlName="landmark" matInput placeholder="Landmark" type="text">
+                    </mat-form-field>
+                </div>
+                <mat-radio-group fxLayout="row" fxLayoutGap="10px" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center" id="radio-group" formControlName="type" aria-label="Select an option">
+                    <mat-radio-button (change)="onTypeChange()" class="radio-btn" value="home">Home</mat-radio-button>
+                    <mat-radio-button (change)="onTypeChange()" class="radio-btn" [checked]="true" value="work">Work</mat-radio-button>
+                    <mat-radio-button (change)="onTypeChange()" class="radio-btn" value="other">Other</mat-radio-button>
+                </mat-radio-group>
+                <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="end center">
+                    <button *ngIf="!clicked" type="submit" fxFlex="30" [disabled]="!customerDetails.valid" mat-button id="continue-btn">CONTINUE</button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</ng-template>

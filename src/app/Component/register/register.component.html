@@ -1,0 +1,58 @@
+<mat-card class="bg-image">
+    <mat-card class="register-container" style="margin-top:3% ;">
+        <h1>Create Your Account</h1>
+        <form [formGroup]="user" (ngSubmit)="validation()">
+            <div>
+                <div>
+                    <mat-form-field appearance="outline" class="box1">
+                        <mat-label>First Name</mat-label>
+                        <input formControlName="firstName" required matInput placeholder="First Name" type="text">
+                        <mat-error *ngIf="user.get('firstName').hasError('required')">First name required</mat-error>
+                        <mat-error *ngIf="user.get('firstName').hasError('pattern')">Invalid First Name</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="box2">
+                        <mat-label>Last Name</mat-label>
+                        <input formControlName="lastName" matInput placeholder="Last Name" required type="text">
+                        <mat-error *ngIf="user.get('lastName').hasError('required')">Last name required</mat-error>
+                        <mat-error *ngIf="user.get('lastName').hasError('pattern')">Invalid Last Name</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="box3">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="userName" matInput placeholder="Username" required type="email">
+                    <mat-error *ngIf="user.get('userName').hasError('required')">Email required</mat-error>
+                    <mat-error *ngIf="user.get('userName').hasError('pattern')">Invalid email</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="container2">
+                <div>
+                    <mat-form-field appearance="outline" class="box4">
+                        <mat-label>Password</mat-label>
+                        <input formControlName="password" matInput placeholder="Password" required type="password">
+                        <mat-error *ngIf="user.get('password').hasError('required')">Password required</mat-error>
+                        <mat-error *ngIf="user.get('password').hasError('pattern')">Invalid email</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="box5">
+                        <mat-label>Confirm</mat-label>
+                        <input formControlName="confirm" matInput placeholder="Confirm" required type="password">
+                        <mat-error *ngIf="user.get('confirm').hasError('required')">Password not match</mat-error>
+                        <mat-error *ngIf="user.get('confirm').hasError('pattern')">Invalid email</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="btns">
+                <div class="login"><a mat-stroked-button routerLink="/login">Login</a></div>
+                <div class="register"><button type="submit" mat-raised-button [disabled]="!user.valid" color="primary">Register</button></div>
+            </div>
+        </form>
+        <div *ngIf="loading">
+            <mat-spinner style="margin:5% 45% ;"></mat-spinner>
+        </div>
+    </mat-card>
+</mat-card>

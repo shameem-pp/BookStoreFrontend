@@ -1,0 +1,34 @@
+.bg-image {
+    width: 100%;
+    height: 100%;
+    background-size: 1369px 765px;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/img.jpg');
+}
+
+.register-container {
+    margin-left: 61%;
+    margin-right: 13%;
+    box-shadow: none;
+}
+
+.box1,
+.box2,
+.box3,
+.box4,
+.box5 {
+    display: inline;
+}
+
+.login {
+    display: inline-block;
+    margin-right: 48%;
+}
+
+.btns {
+    position: relative;
+}
+
+.register {
+    display: inline-block;
+}

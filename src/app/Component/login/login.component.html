@@ -1,0 +1,24 @@
+<!-- <mat-card class="bg-image"> -->
+<mat-card class="login-card" style="margin-top: 10%;">
+    <h1>Sign In</h1>
+    <form [formGroup]="user" (ngSubmit)="validation()">
+        <mat-form-field appearance="outline" class="box1">
+            <mat-label>Email</mat-label>
+            <input formControlName="userName" matInput placeholder="Email" required type="email">
+            <mat-error *ngIf="user.get('userName').hasError('required')">Email required</mat-error>
+            <mat-error *ngIf="user.get('userName').hasError('pattern')">Invalid email</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="box2">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput placeholder="Password" required type="password">
+            <mat-error *ngIf="user.get('password').hasError('required')">Password required</mat-error>
+            <mat-error *ngIf="user.get('password').hasError('pattern')">Invalid Password</mat-error>
+        </mat-form-field>
+        <button class="register-btn" routerLink='/registration' type="submit" mat-raised-button color="primary">Register</button>
+        <button class="login-btn" type="submit" mat-raised-button [disabled]="!user.valid" color="primary">Login</button>
+    </form>
+    <div *ngIf="loading">
+        <mat-spinner style="margin:5% 45% ;"></mat-spinner>
+    </div>
+</mat-card>
+<!-- </mat-card> -->

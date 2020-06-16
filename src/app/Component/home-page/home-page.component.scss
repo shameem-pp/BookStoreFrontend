@@ -1,0 +1,145 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+::ng-deep .mat-menu-panel {
+    padding: 0 10px!important;
+    width: 600px!important;
+}
+
+.signin {
+    color: white;
+    cursor: pointer;
+    margin-left: 8%;
+    font-size: 16px;
+}
+
+#circle {
+    padding: 6px;
+    border-radius: 50%;
+    background: white;
+    margin-left: -1%;
+    margin-top: -2%;
+    position: relative;
+    cursor: pointer;
+}
+
+#show-cart-count {
+    position: relative;
+    font-size: 7px;
+    margin-left: -1%;
+    padding-left: 5px;
+    margin-top: -2%;
+    cursor: pointer;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+    #circle {
+        top: -11%!important;
+        left: -2%!important;
+    }
+    #show-cart-count {
+        top: -11%!important;
+        left: -5%!important;
+        font-size: 10px!important;
+    }
+    h1 {
+        font-size: 12px!important;
+        margin-left: 3%!important;
+    }
+    .signin {
+        font-size: 12px!important;
+    }
+    .icon {
+        margin-left: 8%!important;
+    }
+    .book-icon {
+        margin-left: -2%!important;
+    }
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    margin-left: 5px;
+}
+
+h6 {
+    padding-left: 16%;
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    padding-right: 11px;
+}
+
+input {
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    outline: none;
+    padding: 6px 16px;
+    width: 100%;
+    max-width: 375px;
+    font-size: 16px;
+    line-height: 34px;
+}
+
+.book-icon {
+    margin-left: 9%;
+}
+
+.search-container {
+    display: flex;
+    margin-left: 4%;
+    width: 38%;
+    height: 21%;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.search-icon {
+    cursor: pointer;
+    padding: unset;
+    font-size: 18px;
+}
+
+.search-box {
+    border: 0px;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
+    padding: unset;
+}
+
+.example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 2;
+}
+
+.example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}

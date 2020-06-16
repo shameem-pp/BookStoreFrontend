@@ -1,0 +1,45 @@
+<mat-card fxLayout="row" fxLayoutGap="50px" id="mat-card" fxLayoutAlign="center start" style="margin-top:2%;">
+    <mat-card fxFlex="40" id="mat-card" fxLayout="row" style="margin-left: 14%;">
+        <h2 id="h2">Books&nbsp;</h2>
+        <h4 id="h4">({{numberOfBook}}&nbsp;items)</h4>
+    </mat-card>
+    <mat-form-field fxFlex="20" id="mat-selector">
+        <mat-select (selectionChange)="onChange($event)" placeholder="Sort By" [(value)]="selected">
+            <mat-option value="relevance">Relevance</mat-option>
+            <mat-option value="lowToHigh">Price:Low to High</mat-option>
+            <mat-option value="highToLow">Price:High to Low</mat-option>
+            <mat-option value="newestArrivals">Newest Arrivals</mat-option>
+        </mat-select>
+    </mat-form-field>
+</mat-card>
+<mat-card fxLayout="row" fxLayoutGap="20px" fxLayout="row wrap" fxLayout.xs="column" class="display-container">
+    <mat-card fxFlex="20" fxFlex.md="30" fxFlex.sm="40" *ngFor="let book of books | filter:searchText | paginate: { itemsPerPage: 12, currentPage: p }" class="display-card">
+        <mat-card *ngIf="book.totalNumberOfBooks!=0; else elseBlock" (mouseover)="showBookDetail(book)" (mouseout)="hideBookDetail(book)" id="image-card"><img class="img" [src]="book.coverPhoto"></mat-card>
+        <ng-template #elseBlock>
+            <mat-card class="out-of-stock-box">OUT OF STOCK</mat-card>
+            <mat-card id="image-card-out-of-stock"><img class="img" [src]="book.coverPhoto"></mat-card>
+        </ng-template>
+        <h6>{{book.bookName}}</h6>
+        <p>{{book.auther}}</p>
+        <h6>Rs.&nbsp;{{book.price}}</h6>
+        <span *ngIf="!isContains(book);  else elseBlock2">
+            <span *ngIf="book.totalNumberOfBooks>0; else elseBlock3"  fxLayout.xs="column" fxLayoutAlign="center" fxLayout="row" fxLayout="row wrap">
+                <button fxLayoutAlign="center"  fxLayout.xs="100" fxFlex.md="30" fxFlex.sm="40"  (click)="onClickAddToBag(book)" class="add-to-bag-btn" mat-button>ADD TO BAG</button>
+                <button fxLayoutAlign="center"  fxLayout.xs="100" fxFlex.md="30"  fxFlex.sm="40" class="add-to-wish-btn" mat-button>WISH LIST</button>
+            </span>
+        </span>
+        <ng-template #elseBlock2>
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayout="row wrap"> <button fxLayout.xs="100" fxLayoutAlign="center center" id="added-to-bag-btn" mat-button>ADDED TO BAG</button></div>
+        </ng-template>
+        <ng-template #elseBlock3>
+            <button fxLayout.xs="100" fxLayoutAlign="center center" id="added-to-wish-btn" mat-button>WISH LIST</button>
+        </ng-template>
+
+    </mat-card>
+</mat-card>
+<div style="margin: 2% 38%;">
+    <pagination-controls *ngIf="loading" (pageChange)="p = $event"></pagination-controls>
+</div>
+<mat-card *ngIf="book.totalNumberOfBooks>0 && book.bookDetail!=''" class="book-detail">
+    <h3>Book Detail</h3><br> {{book.bookDetail}}
+</mat-card>
